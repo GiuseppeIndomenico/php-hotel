@@ -57,13 +57,18 @@ $hotels = [
 <body class="bg-dark">
     <div class="container mt-5">
         <h1 class="text-center text-primary mb-5 fw-bold display-1">Hotel Mamma mia che passione!</h1>
-        <div class="d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center flex-column">
+            <form action="" method="get">
+
+
+
+            </form>
 
             <div class="card text-bg-info">
                 <div class="card-header py-2 text-light ">
                     <h3 class="text-center fw-bold  mt-2">Hotel con stanze al momento disponibili</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-0">
                     <table class="table table-primary table-striped text-center border-light">
                         <thead>
                             <tr class="text-uppercase">
