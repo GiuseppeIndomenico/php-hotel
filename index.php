@@ -39,6 +39,26 @@ $hotels = [
     ],
 
 ];
+$filteredHotels = [];
+
+// if (isset($_GET['vote'])) {
+//     foreach ($hotels as $hotel) {
+//         if ($hotel['vote'] >= $_GET['vote']) {
+//             $filteredHotels = $hotel;
+//         }
+//     }
+// } else {
+//     $filteredHotels = $hotels;
+// }
+if (isset($_GET['parking'])) {
+    foreach ($hotels as $hotel) {
+        if ($hotel['parking']) {
+            $filteredHotels[] = $hotel;
+        }
+    }
+} else {
+    $filteredHotels = $hotels;
+}
 
 ?>
 
@@ -57,12 +77,25 @@ $hotels = [
 <body class="bg-dark">
     <div class="container mt-5">
         <h1 class="text-center text-primary mb-5 fw-bold display-1">Hotel Mamma mia che passione!</h1>
-        <div class="d-flex align-items-center justify-content-center flex-column">
-            <form action="" method="get">
-
-
-
-            </form>
+        <form class="d-flex align-items center justify-content-center" action="index.php" method="get">
+            <div class="form-check mb-3 mt-1 text-light">
+                <input class="form-check-input" type="checkbox" name="parking" id="parkingCheckbox" value="1">
+                <label class="form-check-label" for="parkingCheckbox">
+                    Mostra solo hotel con parcheggio
+                </label>
+                <label class="ms-3" for="vote">Voto:</label>
+                <select name="vote" id="vote">
+                    <option selected value="0">all</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3 mx-3">Cerca</button>
+        </form>
+        <div class="d-flex align-items-center justify-content-center">
 
             <div class="card text-bg-info">
                 <div class="card-header py-2 text-light ">
@@ -82,7 +115,7 @@ $hotels = [
                         <tbody>
 
                             <?php
-                            foreach ($hotels as $hotel) {
+                            foreach ($filteredHotels as $hotel) {
                             ?>
                                 <tr>
                                     <th scope="row"> <?php echo $hotel['name'] ?></th>
