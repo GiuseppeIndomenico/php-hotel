@@ -40,24 +40,27 @@ $hotels = [
 
 ];
 $filteredHotels = [];
-
-// if (isset($_GET['vote'])) {
-//     foreach ($hotels as $hotel) {
-//         if ($hotel['vote'] >= $_GET['vote']) {
-//             $filteredHotels = $hotel;
-//         }
-//     }
-// } else {
-//     $filteredHotels = $hotels;
-// }
-if (isset($_GET['parking'])) {
+if (isset($_GET['vote'])) {
     foreach ($hotels as $hotel) {
-        if ($hotel['parking']) {
+        if ($hotel['vote'] >= $_GET['vote']) {
             $filteredHotels[] = $hotel;
         }
     }
+    if (isset($_GET['parking'])) {
+        $tempFilteredHotels = array();
+        foreach ($filteredHotels as $hotel) {
+            if ($hotel['parking']) {
+                array_push($tempFilteredHotels, $hotel);
+            }
+        }
+        $filteredHotels = $tempFilteredHotels;
+    }
 } else {
     $filteredHotels = $hotels;
+}
+
+if (!is_array($filteredHotels)) {
+    $filteredHotels = [$filteredHotels];
 }
 
 ?>
@@ -85,7 +88,7 @@ if (isset($_GET['parking'])) {
                 </label>
                 <label class="ms-3" for="vote">Voto:</label>
                 <select name="vote" id="vote">
-                    <option selected value="0">all</option>
+                    <option value="0">all</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
