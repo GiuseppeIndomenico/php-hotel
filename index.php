@@ -54,7 +54,48 @@ $hotels = [
     <title>Hotel</title>
 </head>
 
-<body class="">
+<body class="bg-dark">
+    <div class="container mt-5">
+        <h1 class="text-center text-primary mb-5 fw-bold display-1">Hotel Mamma mia che passione!</h1>
+        <div class="d-flex align-items-center justify-content-center">
+
+            <div class="card text-bg-info">
+                <div class="card-header py-2 text-light ">
+                    <h3 class="text-center fw-bold  mt-2">Hotel con stanze al momento disponibili</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-primary table-striped text-center border-light">
+                        <thead>
+                            <tr class="text-uppercase">
+                                <th scope="col">Nome Hotel</th>
+                                <th scope="col">Descrizione</th>
+                                <th scope="col">Parcheggio</th>
+                                <th scope="col">Voto</th>
+                                <th scope="col">Distanza dal centro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php
+                            foreach ($hotels as $hotel) {
+                            ?>
+                                <tr>
+                                    <th scope="row"> <?php echo $hotel['name'] ?></th>
+                                    <td> <?php echo $hotel['description'] ?> </td>
+                                    <td> <?php echo $hotel['parking'] ? 'Provvisto di parcheggio interno' : 'Non provvisto di parcheggio interno' ?></td>
+                                    <td><?php echo $hotel['vote'] ?> su 5</td>
+                                    <td><?php echo $hotel['distance_to_center'] ?> Km</td>
+                                </tr>
+
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
 
